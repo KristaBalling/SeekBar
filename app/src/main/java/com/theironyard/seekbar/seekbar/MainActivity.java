@@ -1,5 +1,6 @@
 package com.theironyard.seekbar.seekbar;
 
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,17 +24,26 @@ public class MainActivity extends AppCompatActivity {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                // Log.d("SB", "OnProgress!");
                 resultTextView.setText("Pain Level: " + seekBar.getProgress() + "/" + seekBar.getMax());
+
+                if (seekBar.getProgress() <= 6) {
+                    resultTextView.setTextColor(Color.GRAY);
+                }
             }
+
 
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
-                Log.d("SB", "OnStartTrackingTouch!!");
+              //  Log.d("SB", "OnStartTrackingTouch!!");
 
             }
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-                Log.d("SB", "OnStopTrackingTouch!!");
+
+                if (seekBar.getProgress() >= 7) {
+                    resultTextView.setTextColor(Color.RED);
+                }
+               // Log.d("SB", "OnStopTrackingTouch!!");
 
             }
         });
